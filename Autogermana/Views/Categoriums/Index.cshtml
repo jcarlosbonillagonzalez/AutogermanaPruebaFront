@@ -1,0 +1,47 @@
+﻿@model IEnumerable<Autogermana.Models.Categorium>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Gestión de Categorias</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-success">Registrar Nueva Categoria</a>
+</p>
+<table class="table table-hover table-responsive">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descripcion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Estado)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descripcion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Estado)
+            </td>
+            <td>
+                <a asp-action="Edit" class="btn btn-success" asp-route-id="@item.Idcategoria">Editar</a> 
+                <a asp-action="Details" class="btn btn-info"  asp-route-id="@item.Idcategoria">Detalles</a> 
+                <a asp-action="Delete" class="btn btn-danger" asp-route-id="@item.Idcategoria">Eliminar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
